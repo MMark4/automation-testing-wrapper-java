@@ -1,17 +1,9 @@
 package saetabis.automation.testingWrapper.services.api;
 
 import io.restassured.http.ContentType;
-import io.restassured.response.Response;
-import lombok.Getter;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.testng.Reporter;
-import saetabis.automation.testingWrapper.services.api.commons.EndpointsConfig;
 import saetabis.automation.testingWrapper.services.api.commons.Services;
-import saetabis.automation.testingWrapper.services.api.responses.GuideResponse;
 
 import static com.google.common.base.Preconditions.checkArgument;
-import static io.restassured.RestAssured.given;
 
 public class ChannelsService {
 
@@ -21,12 +13,12 @@ public class ChannelsService {
         this.api = services;
     }
 
-    public Services getGuide(String a0,String a1,String a2,String a3,String a4,String a5,String a6,String a7,String a8,String a9) {
+    public Services getGuide(String startTime,String endTime,String deviceId,String deviceMake,String deviceType,String deviceVersion,String dnt,String sid,String appName,String appVersion) {
 
-        checkArgument(a0!=null,"cant be null");
+        checkArgument(startTime!=null && endTime!=null && deviceId!=null && deviceMake!=null && deviceType!=null && deviceVersion!=null && dnt!=null && sid!=null && appName!=null && appVersion!=null,"Parameters cant be null");
         return api
                 .setContentType(ContentType.JSON)
-                .setRequestUrl("/v1/guide?start=%s&stop=%s&deviceId=%s&deviceMake=%s&deviceType=%s&deviceVersion=%s&DNT=%s&sid=%s&appName=%s&appVersion=%s",a0,a1,a2,a3,a4,a5,a6,a7,a8,a9)
+                .setRequestUrl("/v1/guide?start=%s&stop=%s&deviceId=%s&deviceMake=%s&deviceType=%s&deviceVersion=%s&DNT=%s&sid=%s&appName=%s&appVersion=%s",startTime,endTime,deviceId,deviceMake,deviceType,deviceVersion,dnt,sid,appName,appVersion)
                 .getRequest(200);
     }
 
