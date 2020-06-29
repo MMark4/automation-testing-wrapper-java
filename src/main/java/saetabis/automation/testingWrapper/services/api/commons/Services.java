@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import saetabis.automation.testingWrapper.commons.LoggingConfig;
 import saetabis.automation.testingWrapper.services.api.ChannelsService;
 
 import static io.restassured.config.EncoderConfig.encoderConfig;

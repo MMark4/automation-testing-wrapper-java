@@ -1,7 +1,6 @@
 package saetabis.automation.testingWrapper.services.ui.elements.CustomElements;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.internal.Coordinates;
 
 import java.util.List;
 

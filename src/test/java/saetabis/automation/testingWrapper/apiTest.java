@@ -2,8 +2,6 @@ package saetabis.automation.testingWrapper;
 
 import org.testng.annotations.Test;
 import saetabis.automation.testingWrapper.commons.AbstractTest;
-import saetabis.automation.testingWrapper.services.api.commons.Services;
-
 
 public class apiTest extends AbstractTest {
 

@@ -17,7 +17,6 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import lombok.NonNull;
 import lombok.extern.log4j.Log4j;
-import lombok.var;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.params.CoreConnectionPNames;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,7 +54,7 @@ public abstract class RestCalls {
     RestAssuredConfig restAssuredConfig() {
         return RestAssuredConfig.config().objectMapperConfig(new ObjectMapperConfig().jackson2ObjectMapperFactory(
                 (aClass, s) -> {
-                    var objectMapper = new ObjectMapper();
+                    ObjectMapper objectMapper = new ObjectMapper();
                     objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
                     objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
                     objectMapper.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_VALUES,true);
