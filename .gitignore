@@ -1,0 +1,47 @@
+*.class
+
+.gradle/
+build/
+target/
+test-output/
+.project
+.classpath
+.settings/
+*.log
+*debug.xml
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# IntelliJ Project Files #
+
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+/.checkstyle
+
+# ds_store files created by mac
+**/.DS_Store
+
+/node
+/node_modules
+
+# ignoring downloaded drivers
+drivers/
+
+# ignoring downloaded files
+downloads/**
+
+# ignoring downloaded pdfs
+pdf_downloads/
+
+#ignoring debug files for local testing
+*debug*
