@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix="pages")
 public class PagesConfig {
 
-    private String baseUrl;
+    private String landing;
 
     private String liveTvPath;
 

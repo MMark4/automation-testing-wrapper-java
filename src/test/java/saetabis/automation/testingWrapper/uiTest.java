@@ -1,10 +1,14 @@
 package saetabis.automation.testingWrapper;
 
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import saetabis.automation.testingWrapper.commons.MainConfig;
+import org.testng.annotations.Test;
+import saetabis.automation.testingWrapper.commons.AbstractTest;
+import saetabis.automation.testingWrapper.services.ui.pages.LandingPage;
 
-@SpringBootTest(classes = {MainConfig.class})
-public class uiTest extends AbstractTestNGSpringContextTests {
+public class uiTest extends AbstractTest {
 
+    @Test
+    public void testGuideGrid () {
+            web()
+                .navigateToPage(pagesConfig.getLanding(), LandingPage.class);
+    }
 }
