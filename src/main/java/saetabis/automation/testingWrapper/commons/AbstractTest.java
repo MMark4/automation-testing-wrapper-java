@@ -17,15 +17,8 @@ public class AbstractTest extends AbstractTestNGSpringContextTests {
     @Autowired
     private Services api;
 
-    private static final ThreadLocal<SoftAssert> softlyThread = getThreadSafeSoftly();
-
-    protected final SoftAssert softly = softlyThread.get();
-
-    private static ThreadLocal<SoftAssert> getThreadSafeSoftly() {
-        ThreadLocal<SoftAssert> softlyTemp = new ThreadLocal<>();
-        softlyTemp.set(SoftAssert.getInstance());
-        return softlyTemp;
-    }
+    @Autowired
+    private SoftAssert softly;
 
     public Services api() {
         return api;

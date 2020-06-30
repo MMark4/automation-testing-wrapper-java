@@ -7,11 +7,16 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.assertj.core.api.*;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Log4j
+@Component
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class SoftAssert extends SoftAssertions {
 
     @Autowired
@@ -19,7 +24,6 @@ public class SoftAssert extends SoftAssertions {
 
     private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
     private static SoftAssert softly = new SoftAssert();
-    public static boolean print_logs = true;
 
     private SoftAssert() {
     }
@@ -35,7 +39,7 @@ public class SoftAssert extends SoftAssertions {
 
     public StringAssert assertThat(String actual) {
         // Take Screenshot here
-        if (this.print_logs) {
+        if (loggingConfig.getIsPrinting()) {
             // Take Screenshot here
             if (loggingConfig.getIsExtended()) {
                 log.info(String.format("Validating the value: %s", actual));
@@ -45,7 +49,7 @@ public class SoftAssert extends SoftAssertions {
     }
 
     public BooleanAssert assertThat(boolean actual) {
-        if (this.print_logs) {
+        if (loggingConfig.getIsPrinting()) {
             if (loggingConfig.getIsExtended()) {
                 log.info(String.format("Validating the value: %s", actual));
             }
@@ -54,7 +58,7 @@ public class SoftAssert extends SoftAssertions {
     }
 
     public <T> ProxyableListAssert<T> assertThat(List<? extends T> actual) {
-        if (this.print_logs) {
+        if (loggingConfig.getIsPrinting()) {
             if (loggingConfig.getIsExtended()) {
                 log.info(String.format("Validating the value: %s", ArrayUtils.toString(actual)));
 
@@ -64,7 +68,7 @@ public class SoftAssert extends SoftAssertions {
     }
 
     public IntegerAssert assertThat(int actual) {
-        if (this.print_logs) {
+        if (loggingConfig.getIsPrinting()) {
             if (loggingConfig.getIsExtended()) {
                 log.info(String.format("Validating the value: %s", actual));
             }
@@ -73,7 +77,7 @@ public class SoftAssert extends SoftAssertions {
     }
 
     public LongAssert assertThat(Long actual) {
-        if (this.print_logs) {
+        if (loggingConfig.getIsPrinting()) {
             if (loggingConfig.getIsExtended()) {
                 log.info(String.format("Validating the value: %s", actual));
             }
