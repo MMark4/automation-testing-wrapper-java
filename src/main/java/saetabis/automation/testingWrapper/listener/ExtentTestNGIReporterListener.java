@@ -119,11 +119,11 @@ public class ExtentTestNGIReporterListener implements IReporter {
 					String[] jiraIds = result.getMethod().getDescription().substring(result.getMethod().getDescription().indexOf("#") + 1).split(",");
 					String hyperLink = "";
 					for (String jiraId : jiraIds) {
-						String jiraUrl = String.format("https://credify.atlassian.net/browse/%s", jiraId);
+						String jiraUrl = String.format("https://.atlassian.net/browse/%s", jiraId);
 						hyperLink = hyperLink.concat(String.format("<a href='%s' target=\"_blank\">%s</a> ", jiraUrl, jiraId));
 
 						if (jiraId.trim().length() > 1) {
-							extent.setSystemInfo("<a href=\"https://credify.atlassian.net/browse/" + jiraId + "\">" + jiraId + "</a>", status.toString());
+							extent.setSystemInfo("<a href=\"https://.atlassian.net/browse/" + jiraId + "\">" + jiraId + "</a>", status.toString());
 						}
 					}
 					String allExpectedFailures = isAllSoftAssertionsExpected() ? " <span class=\"label start-time\">Expected Failures</span>" : "";
@@ -184,7 +184,7 @@ public class ExtentTestNGIReporterListener implements IReporter {
 	private String getTestFailureId(Throwable th){
 		String fId = "";
 		for (StackTraceElement te: th.getStackTrace()){
-			if (te.getClassName().contains("com.upgrade.tests")){
+			if (te.getClassName().contains("saetabis.automation.testingWrapper.tests")){
 				fId = fId.concat(te.getMethodName() + ":" + String.valueOf(te.getLineNumber()));
 			}
 		}
@@ -211,7 +211,7 @@ public class ExtentTestNGIReporterListener implements IReporter {
 		String testFailId = getTestFailureId(th);
 		String infoMsg ="";
 		if (knownFailures!=null && !knownFailures.isEmpty() && knownFailures.get(testFailId)!=null){
-			String jiraUrl = String.format("https://credify.atlassian.net/browse/%s", knownFailures.get(testFailId));
+			String jiraUrl = String.format("https://.atlassian.net/browse/%s", knownFailures.get(testFailId));
 			String hyperLink = String.format("<a style=\"color:#fff;\" href='%s'>%s</a> ", jiraUrl, knownFailures.get(testFailId));
 			infoMsg = "<b style=\"background-color:#00c853;\">Failure is already reported: " + hyperLink + " </b>";
 		}
@@ -246,7 +246,7 @@ public class ExtentTestNGIReporterListener implements IReporter {
 				// create screeenshot names
 				String screenShotFileName = null;
 				for (int i=0;i<th.getStackTrace().length;i++){
-					if (th.getStackTrace()[i].getClassName().contains("com.upgrade")){
+					if (th.getStackTrace()[i].getClassName().contains("saetabis.automation.testingWrapper")){
 						if (screenShotFileName == null) {
 							screenShotFileName = th.getStackTrace()[i].getMethodName();
 						}
@@ -289,7 +289,7 @@ public class ExtentTestNGIReporterListener implements IReporter {
 						for (int screenshotIndex : indices) {
 							String infoMsg = "";
 							if (knownFailures!=null && !knownFailures.isEmpty() && softAssertFailureIds!=null && !softAssertFailureIds.isEmpty() && knownFailures.get(softAssertFailureIds.get(screenshotIndex))!=null){
-								String jiraUrl = String.format("https://credify.atlassian.net/browse/%s", knownFailures.get(softAssertFailureIds.get(screenshotIndex)));
+								String jiraUrl = String.format("https://.atlassian.net/browse/%s", knownFailures.get(softAssertFailureIds.get(screenshotIndex)));
 								String hyperLink = String.format("<a style=\"color:#fff;\" href='%s'>%s</a> ", jiraUrl, knownFailures.get(softAssertFailureIds.get(screenshotIndex)));
 								infoMsg = "<br><b style=\"background-color:#00c853;\">Failure is already reported: " + hyperLink + " </b>";
 							}
