@@ -24,6 +24,10 @@ public class AbstractTest extends AbstractTestNGSpringContextTests {
         return api;
     }
 
+    public SoftAssert softly() {
+        return softly;
+    }
+
     @BeforeSuite(alwaysRun = true)
     public void beforeSuite() throws IOException {
             setLog4j();
