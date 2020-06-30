@@ -2,6 +2,10 @@
 
 <suite thread-count="1" verbose="1" name="Basic suite" annotations="JDK" parallel="tests">
 
+    <listeners>
+        <listener class-name="saetabis.automation.testingWrapper.listener.ExtentTestNGIReporterListener" />
+    </listeners>
+
     <test name="apiTests">
         <classes>
             <class name="saetabis.automation.testingWrapper.apiTest"/>

@@ -12,6 +12,8 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Listeners;
+import saetabis.automation.testingWrapper.listener.ExtentTestNGIReporterListener;
 import saetabis.automation.testingWrapper.services.api.commons.Services;
 import saetabis.automation.testingWrapper.services.ui.common.PagesConfig;
 import saetabis.automation.testingWrapper.services.ui.common.WebUser;
@@ -25,6 +27,7 @@ import java.util.UUID;
 
 @Log4j
 @SpringBootTest(classes = {MainConfig.class})
+@Listeners({ExtentTestNGIReporterListener.class})
 public class AbstractTest extends AbstractTestNGSpringContextTests {
 
     @Autowired
